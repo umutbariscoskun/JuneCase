@@ -23,7 +23,7 @@ abstract class MessageRemoteDataSource {
   });
 
   @PUT('${DataConstants.messagesEndpoint}/{id}')
-  Future<MessageModel> updateAnMessage({
+  Future<MessageModel> updateMessage({
     @Path('id') required String id,
     @Body() required Map<String, dynamic> body,
   });

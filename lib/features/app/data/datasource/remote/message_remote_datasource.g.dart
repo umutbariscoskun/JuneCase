@@ -54,7 +54,7 @@ class _MessageRemoteDataSource implements MessageRemoteDataSource {
   }
 
   @override
-  Future<MessageModel> updateAnMessage({
+  Future<MessageModel> updateMessage({
     required String id,
     required Map<String, dynamic> body,
   }) async {
