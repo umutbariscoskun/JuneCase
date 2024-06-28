@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:mutlumesaj/features/app/domain/entity/message_entity.dart';
+
 class MessageModel {
   MessageModel({
     required this.id,
@@ -72,5 +74,10 @@ class MessageModel {
         content.hashCode ^
         isLiked.hashCode ^
         createdAt.hashCode;
+  }
+
+  MessageEntity toEntity() {
+    return MessageEntity(
+        id: id, content: content, createdAt: createdAt, isLiked: isLiked);
   }
 }
