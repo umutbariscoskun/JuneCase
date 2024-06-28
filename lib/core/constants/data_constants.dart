@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DataConstants {
   static const String baseUrl = "https://667eae13f2cb59c38dc6ab05.mockapi.io/";
   static const String messagesEndpoint = "/api/v1/messages";
-  static const int paginationLimit = 10;
+  static const int paginationLimit = 5;
 
   //Localization Constants
 
