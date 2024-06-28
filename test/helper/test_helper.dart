@@ -20,11 +20,21 @@ var messageModel = MessageModel(
 /// Get the dummy data from the json file
 String get jsonMessagesData => readJson(dummyDataPath);
 
-/// Get the dummy MessageResponseModel
-MessageModel get dummyMessageResponseModel => MessageModel.fromJson(
-      jsonDecode(readJson(dummyDataPath)),
-    );
+List<MessageModel> getModelsFromJsonFile() {
+  final jsonMap = jsonDecode(jsonMessagesData);
+  List<MessageModel> messages = List<MessageModel>.from(
+      jsonMap.map((model) => MessageModel.fromJson(model)));
+  return messages;
+}
 
-/// Get the dummy MessageEntity
-MessageEntity get dummyMessageResponseEntity =>
-    dummyMessageResponseModel.toEntity();
+List<MessageEntity> mapModelsToEntities() {
+  var models = getModelsFromJsonFile();
+  return models.map((model) {
+    return MessageEntity(
+      id: model.id,
+      content: model.content,
+      createdAt: DateTime.now(), // Assuming createdAt is in seconds
+      isLiked: model.isLiked,
+    );
+  }).toList();
+}
