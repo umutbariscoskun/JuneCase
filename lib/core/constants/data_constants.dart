@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DataConstants {
-  // static const String baseUrl = "https://65008bc118c34dee0cd515ba.mockapi.io/";
-  // static const String accountEndpoint = "/api/v1/account";
-  // static const int paginationLimit = 10;
+  static const String baseUrl = "https://667eae13f2cb59c38dc6ab05.mockapi.io/";
+  static const String messagesEndpoint = "/api/v1/messages";
+  static const int paginationLimit = 10;
 
   //Localization Constants
 
