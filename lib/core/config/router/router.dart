@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mutlumesaj/features/app/presentation/home_view.dart';
+import 'package:mutlumesaj/features/app/presentation/home/home_view.dart';
 
 part 'router.gr.dart';
 
