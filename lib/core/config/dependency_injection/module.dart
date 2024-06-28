@@ -4,6 +4,6 @@ import 'package:mutlumesaj/features/app/data/service/dio_client.dart';
 
 @module
 abstract class RegisterModule {
-  final MessageRemoteDataSource accountDioClient =
-      MessageRemoteDataSource(AccountDioClient.dio);
+  final MessageRemoteDataSource messageDioClient =
+      MessageRemoteDataSource(MessageDioClient.dio);
 }
