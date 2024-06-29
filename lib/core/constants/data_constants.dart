@@ -16,4 +16,6 @@ class DataConstants {
   static const enLocale = Locale(enLanguageCode, enCountryCode);
 
   static const String translationsFilePath = 'assets/translations';
+
+  static const String dateFormat = 'dd.MM.yyyy';
 }

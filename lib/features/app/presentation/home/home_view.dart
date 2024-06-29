@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +11,7 @@ import 'package:mutlumesaj/core/base_bloc/base_widget.dart';
 import 'package:mutlumesaj/core/config/dependency_injection/injectable.dart';
 import 'package:mutlumesaj/core/constants/asset_constants.dart';
 import 'package:mutlumesaj/core/constants/color_constants.dart';
+import 'package:mutlumesaj/core/constants/data_constants.dart';
 import 'package:mutlumesaj/core/constants/theme_constants.dart';
 import 'package:mutlumesaj/features/app/domain/entity/message_entity.dart';
 import 'package:mutlumesaj/features/app/presentation/Common/Widget/animated_button.dart';
@@ -228,6 +230,8 @@ final class _MessageBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String formattedDate =
+        DateFormat(DataConstants.dateFormat).format(item.createdAt);
     return Container(
       padding: EdgeInsets.all(16.r),
       child: Column(
@@ -239,14 +243,13 @@ final class _MessageBox extends StatelessWidget {
               Expanded(
                 child: Text(
                   //TODO : TRANSLATE IT
-                  "Dear User",
+                  "Dear User,",
                   style: ThemeConstants.large(context),
                 ),
               ),
               Gap(8.w),
               Text(
-                //TODO: FORMAT
-                item.createdAt.toString(),
+                formattedDate,
                 style: ThemeConstants.small(context),
               ),
             ],
