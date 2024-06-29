@@ -295,7 +295,7 @@ class _LikeButton extends StatelessWidget {
             secondChild: SvgPicture.asset(
                 width: 24.w, height: 24.h, AssetConstants.heartFillIcon),
             crossFadeState:
-                isLiked ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                isLiked ? CrossFadeState.showSecond : CrossFadeState.showFirst,
             duration: const Duration(milliseconds: 300)));
   }
 }
