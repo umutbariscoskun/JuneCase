@@ -6,6 +6,7 @@
         "screenutil",
         "Streamable",
         "usecase",
-        "usecases"
+        "usecases",
+        "vsync"
     ]
 }

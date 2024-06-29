@@ -14,7 +14,7 @@ final class SplashCubit extends BaseCubit<SplashState> {
 
     await Future.delayed(const Duration(seconds: 3)).then(
       (value) => appRouter.pushAndPopUntil(
-        const HomeRoute(),
+        HomeRoute(),
         predicate: (route) {
           return route.settings.name == HomeRoute.name;
         },

@@ -8,4 +8,6 @@ extension ContextExtension on BuildContext {
   double get topPadding => MediaQuery.paddingOf(this).top;
   double get bottomOrDefaultPadding =>
       bottomPadding > 0 ? bottomPadding : defaultPadding;
+
+  TextTheme get textTheme => Theme.of(this).textTheme;
 }
