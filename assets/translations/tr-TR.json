@@ -1,7 +1,9 @@
 {
-    "save" : "Kaydet",
-    "add" : "Ekle",
-    "delete" : "Sil",
-    "cancel" : "İptal",
-    "done" : "Tamam"
+   
+    "todaysLuckyNumber":"Günün Şanslı Sayısı",
+    "dailyMessage":"Günlük Mesaj",
+    "support":"Destek",
+    "about":"Hakkında",
+    "contact":"İletişim",
+    "dearUser":"Sevgili Kullanıcı,"
 }

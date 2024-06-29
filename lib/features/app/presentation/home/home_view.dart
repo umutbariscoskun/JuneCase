@@ -13,6 +13,7 @@ import 'package:mutlumesaj/core/constants/asset_constants.dart';
 import 'package:mutlumesaj/core/constants/color_constants.dart';
 import 'package:mutlumesaj/core/constants/data_constants.dart';
 import 'package:mutlumesaj/core/constants/theme_constants.dart';
+import 'package:mutlumesaj/core/shared/helper_functions.dart';
 import 'package:mutlumesaj/features/app/domain/entity/message_entity.dart';
 import 'package:mutlumesaj/features/app/presentation/Common/Widget/animated_button.dart';
 import 'package:mutlumesaj/features/app/presentation/home/cubit/home_cubit.dart';
@@ -28,7 +29,7 @@ final class HomeScreen extends BaseView<HomeCubit, HomeState> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 30.w),
+            padding: EdgeInsets.only(left: 35.w),
             child: const _BorderedTextButton(),
           ),
           Padding(
@@ -74,12 +75,11 @@ class _BorderedTextButton extends StatelessWidget {
           decoration: BoxDecoration(
               color: ColorConstants.white,
               borderRadius: BorderRadius.circular(24.r)),
-          width: 300.w,
+          width: 280.w,
           height: 48.h,
           child: Center(
               child: Text(
-            //TODO: TRANSLATE IT
-            "Günün Şanslı Sayısı",
+            locales.todaysLuckyNumber,
             style: ThemeConstants.medium(context, ColorConstants.black),
           )),
         ),
@@ -130,8 +130,7 @@ class _AppBar extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  //TODO: LOCALIZE
-                  "Gunluk mesaj",
+                  locales.dailyMessage,
                   style: ThemeConstants.medium(context, ColorConstants.white),
                   textAlign: TextAlign.center,
                 ),
@@ -156,23 +155,19 @@ class _PopUpMenuButton extends StatelessWidget {
       onPressed: () {},
       child: PopupMenuButton(
         offset: Offset(0, 45.h),
-        onSelected: (value) {
-          // your logic
-        },
         itemBuilder: (BuildContext bc) {
-          return const [
-            //TODO:LOCALIZE
+          return [
             PopupMenuItem(
               value: '/support',
-              child: Text("Support"),
+              child: Text(locales.support),
             ),
             PopupMenuItem(
               value: '/about',
-              child: Text("About"),
+              child: Text(locales.about),
             ),
             PopupMenuItem(
               value: '/contact',
-              child: Text("Contact"),
+              child: Text(locales.contact),
             )
           ];
         },
@@ -242,8 +237,7 @@ final class _MessageBox extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  //TODO : TRANSLATE IT
-                  "Dear User,",
+                  locales.dearUser,
                   style: ThemeConstants.large(context),
                 ),
               ),
