@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mutlumesaj/core/base_bloc/base_cubit.dart';
+import 'package:mutlumesaj/core/constants/data_constants.dart';
 import 'package:mutlumesaj/core/utils/extensions/cubit_extension.dart';
 import 'package:mutlumesaj/features/app/domain/entity/message_entity.dart';
 import 'package:mutlumesaj/features/app/domain/usecase/message_usecases.dart';
@@ -44,7 +45,7 @@ final class HomeCubit extends BaseCubit<HomeState> {
         if (result.isEmpty) {
           isLastPage = true;
         } else {
-          if (result.length < 5) {
+          if (result.length < DataConstants.paginationLimit) {
             isLastPage = true;
           }
 
