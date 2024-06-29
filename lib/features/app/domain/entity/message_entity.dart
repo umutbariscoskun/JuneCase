@@ -1,5 +1,7 @@
-class MessageEntity {
-  MessageEntity({
+import 'package:equatable/equatable.dart';
+
+final class MessageEntity extends Equatable {
+  const MessageEntity({
     required this.id,
     required this.content,
     required this.createdAt,
@@ -24,4 +26,7 @@ class MessageEntity {
       isLiked: isLiked ?? this.isLiked,
     );
   }
+
+  @override
+  List<Object?> get props => [id, content, createdAt, isLiked];
 }

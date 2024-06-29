@@ -61,7 +61,7 @@ class MockMessageRemoteDataSource extends _i1.Mock
   @override
   _i5.Future<List<_i2.MessageModel>> getMessages({
     required int? page,
-    int? limitForPerPage = 10,
+    int? limitForPerPage = 5,
   }) =>
       (super.noSuchMethod(
         Invocation.method(

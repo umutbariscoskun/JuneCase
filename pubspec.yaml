@@ -39,6 +39,8 @@ dependencies:
   #UI
   flutter_screenutil: ^5.8.4
   gap: ^3.0.1
+  flutter_svg: ^2.0.9
+
  
 
 dev_dependencies:
@@ -75,6 +77,8 @@ flutter:
   assets:
     - assets/translations/
     - assets/images/
+    - assets/icons/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
