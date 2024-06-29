@@ -265,6 +265,9 @@ final class _ItemBuilder extends BaseWidget<HomeCubit, HomeState> {
       ),
       loaded: (HomeLoaded state) {
         return PageView.builder(
+          onPageChanged: (index) async {
+            await cubit.onIndexChanged(index);
+          },
           scrollDirection: Axis.vertical,
           itemCount: state.messages.length,
           itemBuilder: (context, index) {

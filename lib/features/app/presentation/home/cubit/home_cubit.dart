@@ -13,17 +13,28 @@ final class HomeCubit extends BaseCubit<HomeState> {
   HomeCubit(this._messageUsecases) : super(HomeInitial());
   int _page = 1;
   bool isLastPage = false;
-  var _list = <MessageEntity>[];
+  final _list = <MessageEntity>[];
 
   @override
-  void onBindingCreated() {
-    getMessages();
+  void onBindingCreated() async {
+    emit(HomeLoading());
+
+    await getMessages();
 
     super.onBindingCreated();
   }
 
-  void getMessages() async {
-    emit(HomeLoading());
+  Future<void> onIndexChanged(int index) async {
+    if (index % 4 == 0) {
+      if (!isLastPage) {
+        _page++;
+
+        await getMessages();
+      }
+    }
+  }
+
+  Future<void> getMessages() async {
     if (!isLastPage) {
       final result = await foldAsync(() async => await _messageUsecases
           .getMessagesUseCase
@@ -40,12 +51,13 @@ final class HomeCubit extends BaseCubit<HomeState> {
           final Set<MessageEntity> list = <MessageEntity>{};
           list.addAll(_list);
 
-          emit(HomeLoaded(list.toList()));
+          emit(HomeLoaded([...list]));
         }
       }
     }
   }
 
+//TODO: UPDATE API TOO
   void likeAnItem(MessageEntity item) {
     final likedData = (state as HomeLoaded).messages.map((entity) {
       if (entity.id == item.id) {

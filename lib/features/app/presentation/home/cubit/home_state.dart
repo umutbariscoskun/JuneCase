@@ -23,7 +23,6 @@ final class HomeLoading extends HomeState {}
 
 final class HomeLoaded extends HomeState {
   final List<MessageEntity> messages;
-
   const HomeLoaded(this.messages);
 
   HomeLoaded copyWith({
