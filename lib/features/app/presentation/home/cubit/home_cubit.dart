@@ -13,16 +13,20 @@ part 'home_state.dart';
 @injectable
 final class HomeCubit extends BaseCubit<HomeState> {
   final MessageUsecases _messageUsecases;
-  HomeCubit(this._messageUsecases) : super(HomeInitial());
+  HomeCubit(
+    this._messageUsecases, {
+    @factoryParam required this.firstMessages,
+  }) : super(HomeInitial());
+
   int _page = 1;
   bool isLastPage = false;
   final _list = <MessageEntity>[];
+  final List<MessageEntity> firstMessages;
 
   @override
   void onBindingCreated() async {
-    emit(HomeLoading());
-
-    await getMessages();
+    _list.addAll(firstMessages);
+    emit(HomeLoaded([...firstMessages]));
 
     super.onBindingCreated();
   }

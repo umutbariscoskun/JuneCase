@@ -16,11 +16,13 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     HomeRoute.name: (routeData) {
-      final args =
-          routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
+      final args = routeData.argsAs<HomeRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: HomeScreen(key: args.key),
+        child: HomeScreen(
+          key: args.key,
+          messages: args.messages,
+        ),
       );
     },
     SplashRoute.name: (routeData) {
@@ -39,10 +41,14 @@ abstract class _$AppRouter extends RootStackRouter {
 class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
   HomeRoute({
     Key? key,
+    required List<MessageEntity> messages,
     List<PageRouteInfo>? children,
   }) : super(
           HomeRoute.name,
-          args: HomeRouteArgs(key: key),
+          args: HomeRouteArgs(
+            key: key,
+            messages: messages,
+          ),
           initialChildren: children,
         );
 
@@ -52,13 +58,18 @@ class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
 }
 
 class HomeRouteArgs {
-  const HomeRouteArgs({this.key});
+  const HomeRouteArgs({
+    this.key,
+    required this.messages,
+  });
 
   final Key? key;
 
+  final List<MessageEntity> messages;
+
   @override
   String toString() {
-    return 'HomeRouteArgs{key: $key}';
+    return 'HomeRouteArgs{key: $key, messages: $messages}';
   }
 }
 
