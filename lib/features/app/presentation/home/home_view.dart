@@ -16,7 +16,15 @@ import 'package:mutlumesaj/core/constants/theme_constants.dart';
 import 'package:mutlumesaj/core/shared/helper_functions.dart';
 import 'package:mutlumesaj/features/app/domain/entity/message_entity.dart';
 import 'package:mutlumesaj/features/app/presentation/Common/Widget/animated_button.dart';
+import 'package:mutlumesaj/features/app/presentation/Common/Widget/background_image_view.dart';
 import 'package:mutlumesaj/features/app/presentation/home/cubit/home_cubit.dart';
+
+part 'widget/bordered_text_button.dart';
+part 'widget/svg_button.dart';
+part 'widget/pop_up_menu_button.dart';
+part 'widget/message_box.dart';
+part 'widget/like_button.dart';
+part 'widget/item_builder.dart';
 
 @RoutePage()
 final class HomeScreen extends BaseView<HomeCubit, HomeState> {
@@ -41,7 +49,7 @@ final class HomeScreen extends BaseView<HomeCubit, HomeState> {
           ),
         ],
       ),
-      body: const _BackgroundImageView(_HomeBody()),
+      body: const BackgroundImageView(_HomeBody()),
     );
   }
 }
@@ -61,55 +69,6 @@ class _HomeBody extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _BorderedTextButton extends StatelessWidget {
-  const _BorderedTextButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedButton(
-        child: Container(
-          decoration: BoxDecoration(
-              color: ColorConstants.white,
-              borderRadius: BorderRadius.circular(24.r)),
-          width: 280.w,
-          height: 48.h,
-          child: Center(
-              child: Text(
-            locales.todaysLuckyNumber,
-            style: ThemeConstants.medium(context, ColorConstants.black),
-          )),
-        ),
-        onPressed: () {});
-  }
-}
-
-class _SvgButton extends StatelessWidget {
-  const _SvgButton({required this.svgPath, this.insetPadding});
-  final String svgPath;
-  final double? insetPadding;
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedButton(
-      child: Container(
-        padding: EdgeInsets.all(insetPadding ?? 5.r),
-        decoration: const BoxDecoration(
-          color: ColorConstants.white,
-          shape: BoxShape.circle,
-        ),
-        child: ClipOval(
-          child: SvgPicture.asset(
-            width: 24.w,
-            height: 24.h,
-            svgPath,
-            fit: BoxFit.contain,
-          ),
-        ),
-      ),
-      onPressed: () {},
     );
   }
 }
@@ -142,227 +101,6 @@ class _AppBar extends StatelessWidget {
         Gap(5.h),
         const Divider(thickness: 1, height: 0),
       ],
-    );
-  }
-}
-
-class _PopUpMenuButton extends StatelessWidget {
-  const _PopUpMenuButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedButton(
-      onPressed: () {},
-      child: PopupMenuButton(
-        offset: Offset(0, 45.h),
-        itemBuilder: (BuildContext bc) {
-          return [
-            PopupMenuItem(
-              value: '/support',
-              child: Text(locales.support),
-            ),
-            PopupMenuItem(
-              value: '/about',
-              child: Text(locales.about),
-            ),
-            PopupMenuItem(
-              value: '/contact',
-              child: Text(locales.contact),
-            )
-          ];
-        },
-        child: Container(
-          padding: EdgeInsets.all(5.r),
-          decoration: const BoxDecoration(
-            color: ColorConstants.white,
-            shape: BoxShape.circle,
-          ),
-          child: ClipOval(
-            child: SvgPicture.asset(
-              width: 24.w,
-              height: 24.h,
-              AssetConstants.moreVerticalIcon,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _BackgroundImageView extends StatelessWidget {
-  const _BackgroundImageView(this.view);
-  final Widget view;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Image.asset(
-            AssetConstants.backgroundImagePath,
-            fit: BoxFit.cover,
-          ),
-        ),
-        Positioned.fill(
-          child: ColoredBox(color: ColorConstants.black.withOpacity(0.2)),
-        ),
-        view,
-      ],
-    );
-  }
-}
-
-final class _MessageBox extends StatelessWidget {
-  final MessageEntity item;
-  final void Function(MessageEntity) onLikeButtonPressed;
-
-  const _MessageBox({
-    required this.item,
-    required this.onLikeButtonPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final String formattedDate =
-        DateFormat(DataConstants.dateFormat).format(item.createdAt);
-    return Container(
-      padding: EdgeInsets.all(16.r),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  locales.dearUser,
-                  style: ThemeConstants.large(context),
-                ),
-              ),
-              Gap(8.w),
-              Text(
-                formattedDate,
-                style: ThemeConstants.small(context),
-              ),
-            ],
-          ),
-          Gap(10.h),
-          Flexible(
-            child: SingleChildScrollView(
-              child: Text(
-                item.content,
-                style: ThemeConstants.medium(context, ColorConstants.white),
-              ),
-            ),
-          ),
-          Gap(10.h),
-          _LikeButton(
-            isLiked: item.isLiked,
-            onTap: () => onLikeButtonPressed(item),
-          ),
-          Gap(16.h),
-          Center(
-              child: AnimatedButton(
-                  child: SvgPicture.asset(AssetConstants.shareIcon),
-                  onPressed: () {})),
-          Gap(24.h),
-        ],
-      ),
-    );
-  }
-}
-
-class _LikeButton extends StatelessWidget {
-  const _LikeButton({
-    required this.isLiked,
-    this.onTap,
-  });
-  final bool isLiked;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedButton(
-        onPressed: onTap ?? () {},
-        child: AnimatedCrossFade(
-            firstChild: SvgPicture.asset(
-                width: 24.w, height: 24.h, AssetConstants.heartIcon),
-            secondChild: SvgPicture.asset(
-                width: 24.w, height: 24.h, AssetConstants.heartFillIcon),
-            crossFadeState:
-                isLiked ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-            duration: const Duration(milliseconds: 300)));
-  }
-}
-
-final class _ItemBuilder extends BaseWidget<HomeCubit, HomeState> {
-  const _ItemBuilder();
-
-  @override
-  Widget build(BuildContext context, HomeCubit cubit, HomeState state) {
-    return state.when(
-      initial: () {
-        return const SizedBox.shrink();
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator.adaptive(),
-      ),
-      loaded: (HomeLoaded state) {
-        return PageView.builder(
-          onPageChanged: (index) async {
-            await cubit.onIndexChanged(index);
-          },
-          scrollDirection: Axis.vertical,
-          itemCount: state.messages.length,
-          itemBuilder: (context, index) {
-            final item = state.messages[index];
-
-            return Padding(
-              padding: EdgeInsets.only(
-                left: 24.w,
-                right: 24.w,
-                top: 24.h,
-                bottom: 130.h,
-              ),
-              child: Center(
-                child: BlurContainer(
-                  child: _MessageBox(
-                    item: item,
-                    onLikeButtonPressed: (item) => cubit.likeAnItem(item),
-                  ),
-                ),
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
-}
-
-final class BlurContainer extends StatelessWidget {
-  final Widget child;
-  const BlurContainer({
-    required this.child,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12.r),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 60, sigmaY: 60),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.12),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          child: child,
-        ),
-      ),
     );
   }
 }
