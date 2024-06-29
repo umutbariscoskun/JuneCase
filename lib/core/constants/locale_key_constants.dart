@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 
 class LocaleKeyConstants {
-  final String save = 'save'.tr();
-  final String add = 'add'.tr();
-  final String delete = 'delete'.tr();
-  final String done = 'done'.tr();
-  final String cancel = 'cancel'.tr();
+  final String todaysLuckyNumber = 'todaysLuckyNumber'.tr();
+  final String dailyMessage = 'dailyMessage'.tr();
+  final String support = 'support'.tr();
+  final String about = 'about'.tr();
+  final String contact = 'contact'.tr();
+  final String dearUser = 'dearUser'.tr();
 }
