@@ -26,19 +26,38 @@ final class HomeScreen extends BaseView<HomeCubit, HomeState> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 40.w),
+            padding: EdgeInsets.only(left: 30.w),
             child: const _BorderedTextButton(),
           ),
           Padding(
             padding: EdgeInsets.only(right: 10.w),
             child: _SvgButton(
               svgPath: AssetConstants.editIcon,
-              insetPadding: 11.r,
+              insetPadding: 12.w,
             ),
           ),
         ],
       ),
       body: const _BackgroundImageView(_HomeBody()),
+    );
+  }
+}
+
+class _HomeBody extends StatelessWidget {
+  const _HomeBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: const Column(
+          children: [
+            _AppBar(),
+            Expanded(child: _ItemBuilder()),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -53,7 +72,7 @@ class _BorderedTextButton extends StatelessWidget {
           decoration: BoxDecoration(
               color: ColorConstants.white,
               borderRadius: BorderRadius.circular(24.r)),
-          width: 270.w,
+          width: 300.w,
           height: 48.h,
           child: Center(
               child: Text(
@@ -93,25 +112,6 @@ class _SvgButton extends StatelessWidget {
   }
 }
 
-class _HomeBody extends StatelessWidget {
-  const _HomeBody();
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-        child: const Column(
-          children: [
-            _AppBar(),
-            Expanded(child: _ItemBuilder()),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class _AppBar extends StatelessWidget {
   const _AppBar();
 
@@ -134,13 +134,62 @@ class _AppBar extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const _SvgButton(svgPath: AssetConstants.moreVerticalIcon)
+              const _PopUpMenuButton()
             ],
           ),
         ),
         Gap(5.h),
         const Divider(thickness: 1, height: 0),
       ],
+    );
+  }
+}
+
+class _PopUpMenuButton extends StatelessWidget {
+  const _PopUpMenuButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedButton(
+      onPressed: () {},
+      child: PopupMenuButton(
+        offset: Offset(0, 45.h),
+        onSelected: (value) {
+          // your logic
+        },
+        itemBuilder: (BuildContext bc) {
+          return const [
+            //TODO:LOCALIZE
+            PopupMenuItem(
+              value: '/support',
+              child: Text("Support"),
+            ),
+            PopupMenuItem(
+              value: '/about',
+              child: Text("About"),
+            ),
+            PopupMenuItem(
+              value: '/contact',
+              child: Text("Contact"),
+            )
+          ];
+        },
+        child: Container(
+          padding: EdgeInsets.all(5.r),
+          decoration: const BoxDecoration(
+            color: ColorConstants.white,
+            shape: BoxShape.circle,
+          ),
+          child: ClipOval(
+            child: SvgPicture.asset(
+              width: 24.w,
+              height: 24.h,
+              AssetConstants.moreVerticalIcon,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
