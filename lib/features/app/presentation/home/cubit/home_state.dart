@@ -33,4 +33,7 @@ final class HomeLoaded extends HomeState {
       messages ?? this.messages,
     );
   }
+
+  @override
+  List<Object> get props => [messages];
 }

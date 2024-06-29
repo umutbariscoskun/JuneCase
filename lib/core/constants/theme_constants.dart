@@ -12,6 +12,11 @@ class ThemeConstants {
     return context.textTheme.bodyLarge
         ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold);
   }
+
+  static TextStyle? small(BuildContext context) {
+    return context.textTheme.bodySmall
+        ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold);
+  }
 }
 
 double kRadius = 20.r;
