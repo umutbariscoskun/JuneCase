@@ -64,7 +64,7 @@ final class HomeCubit extends BaseCubit<HomeState> {
     }
   }
 
-  Future<void> likeAnItem(MessageEntity item) async {
+  void likeAnItem(MessageEntity item) {
     var e = item;
 
     final likedData = (state as HomeLoaded).messages.map((entity) {
@@ -81,8 +81,8 @@ final class HomeCubit extends BaseCubit<HomeState> {
     emit((state as HomeLoaded).copyWith(messages: likedData));
   }
 
-  Future<void> updateApiMessage(MessageEntity entity) async {
-    await foldAsync(() async => await _messageUsecases.updateMessageUseCase
+  void updateApiMessage(MessageEntity entity) {
+    foldAsync(() async => await _messageUsecases.updateMessageUseCase
         .call(UpdateMessageParams(messageEntity: entity)));
   }
 }
