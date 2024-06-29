@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mutlumesaj/core/base_bloc/base_cubit.dart';
@@ -62,16 +64,25 @@ final class HomeCubit extends BaseCubit<HomeState> {
     }
   }
 
-//TODO: UPDATE API TOO
-  void likeAnItem(MessageEntity item) {
+  Future<void> likeAnItem(MessageEntity item) async {
+    var e = item;
+
     final likedData = (state as HomeLoaded).messages.map((entity) {
       if (entity.id == item.id) {
-        return entity.copyWith(isLiked: !entity.isLiked);
+        e = entity.copyWith(isLiked: !entity.isLiked);
+
+        return e;
       }
 
       return entity;
     }).toList();
 
+    updateApiMessage(e);
     emit((state as HomeLoaded).copyWith(messages: likedData));
+  }
+
+  Future<void> updateApiMessage(MessageEntity entity) async {
+    await foldAsync(() async => await _messageUsecases.updateMessageUseCase
+        .call(UpdateMessageParams(messageEntity: entity)));
   }
 }
