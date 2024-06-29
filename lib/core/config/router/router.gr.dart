@@ -20,7 +20,15 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const HomeScreen(),
       );
-    }
+    },
+    SplashRoute.name: (routeData) {
+      final args = routeData.argsAs<SplashRouteArgs>(
+          orElse: () => const SplashRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SplashScreen(key: args.key),
+      );
+    },
   };
 }
 
@@ -36,4 +44,32 @@ class HomeRoute extends PageRouteInfo<void> {
   static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SplashScreen]
+class SplashRoute extends PageRouteInfo<SplashRouteArgs> {
+  SplashRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SplashRoute.name,
+          args: SplashRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'SplashRoute';
+
+  static const PageInfo<SplashRouteArgs> page = PageInfo<SplashRouteArgs>(name);
+}
+
+class SplashRouteArgs {
+  const SplashRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'SplashRouteArgs{key: $key}';
+  }
 }
