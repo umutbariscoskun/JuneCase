@@ -44,6 +44,10 @@ final class HomeCubit extends BaseCubit<HomeState> {
         if (result.isEmpty) {
           isLastPage = true;
         } else {
+          if (result.length < 5) {
+            isLastPage = true;
+          }
+
           _list.addAll(result);
 
           ///to prevent duplicate elements
