@@ -8,8 +8,8 @@ class EnvironmentBanner extends StatelessWidget {
   const EnvironmentBanner({
     required this.child,
     required this.message,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
