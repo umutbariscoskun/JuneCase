@@ -32,7 +32,7 @@ final class HomeCubit extends BaseCubit<HomeState> {
   }
 
   Future<void> onIndexChanged(int index) async {
-    if (index % 4 == 0) {
+    if (index != 0 && index % 4 == 0) {
       if (!isLastPage) {
         _page++;
 
@@ -68,7 +68,7 @@ final class HomeCubit extends BaseCubit<HomeState> {
     }
   }
 
-  void likeAnItem(MessageEntity item) {
+  Future<void> likeAnItem(MessageEntity item) async {
     var e = item;
 
     final likedData = (state as HomeLoaded).messages.map((entity) {
@@ -81,12 +81,12 @@ final class HomeCubit extends BaseCubit<HomeState> {
       return entity;
     }).toList();
 
-    updateApiMessage(e);
+    await updateApiMessage(e);
     emit((state as HomeLoaded).copyWith(messages: likedData));
   }
 
-  void updateApiMessage(MessageEntity entity) {
-    foldAsync(() async => await _messageUsecases.updateMessageUseCase
+  Future<void> updateApiMessage(MessageEntity entity) async {
+    await foldAsync(() async => await _messageUsecases.updateMessageUseCase
         .call(UpdateMessageParams(messageEntity: entity)));
   }
 }
