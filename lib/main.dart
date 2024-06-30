@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mutlumesaj/core/config/dependency_injection/injectable.dart';
 import 'package:mutlumesaj/core/config/observer/route_observer.dart';
 import 'package:mutlumesaj/core/constants/data_constants.dart';
+import 'package:mutlumesaj/core/env/environment.dart';
+import 'package:mutlumesaj/core/env/environment_banner.dart';
 import 'package:mutlumesaj/core/shared/helper_functions.dart';
 
 void main() async {
@@ -19,7 +21,9 @@ void main() async {
       ],
       path: DataConstants.translationsFilePath,
       fallbackLocale: DataConstants.enLocale,
-      child: const MyApp()));
+      child: EnvironmentBanner(
+          message: EnvironmentConfig.currentEnvironment.toUpperCase(),
+          child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
