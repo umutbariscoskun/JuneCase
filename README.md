@@ -96,7 +96,7 @@ run-debug-uat:
  ##### FOR UNIT TESTING:
  
 - [mockito](https://pub.dev/packages/mockito)
-- [mock_web_server](https://pub.dev/packages/mockito](https://pub.dev/packages/mock_web_server)
+- [mock_web_server](https://pub.dev/packages/mock_web_server)
 
  ### UI
 ![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 28 29](https://github.com/umutbariscoskun/JuneCase/assets/45595606/0d19ab84-d0fb-4fcb-9617-38f92374d18e)
