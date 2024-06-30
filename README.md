@@ -47,13 +47,16 @@ run-debug-uat:
  
  `make run-debug-prod`
 
+  ##### Bundle display names and bundle identifiers, version numbers updated for per environment 
+  ![image](https://github.com/umutbariscoskun/JuneCase/assets/45595606/5f2f83a9-49eb-4916-bf8b-493b3bdc73cb)
+
  
  ### Localization: 
  
  You have to change locale& country on ios to change app locale 
 
- -### EN: ![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 27 37](https://github.com/umutbariscoskun/JuneCase/assets/45595606/e54a26e1-3234-42f8-81eb-8233392c4edc)
- -### TR: ![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 28 29](https://github.com/umutbariscoskun/JuneCase/assets/45595606/0d19ab84-d0fb-4fcb-9617-38f92374d18e)
+ -### EN: ![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 40 30](https://github.com/umutbariscoskun/JuneCase/assets/45595606/d0b04f18-6650-4ccf-8ad7-d577030806b9)
+ -### TR: ![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 38 23](https://github.com/umutbariscoskun/JuneCase/assets/45595606/3c0dfc9c-c462-4479-a927-f16bca9caf5e)
 
  ### Unit Testing: 
  
@@ -99,5 +102,5 @@ run-debug-uat:
 - [mock_web_server](https://pub.dev/packages/mock_web_server)
 
  ### UI
-![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 28 29](https://github.com/umutbariscoskun/JuneCase/assets/45595606/0d19ab84-d0fb-4fcb-9617-38f92374d18e)
+![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 40 30](https://github.com/umutbariscoskun/JuneCase/assets/45595606/d0b04f18-6650-4ccf-8ad7-d577030806b9)
 # JuneCase
