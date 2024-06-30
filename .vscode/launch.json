@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+  
+        //Environments set as test-dev test-uat test-prod 
+        //So you can test them with debug without release builds 
+  
+        //It wont work for android because of 'test' keyword 
+        //You can change it with 'dev'
+        "name": "Launch dev",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "dev",
+          "--target",
+          "lib/main.dart",
+          "--dart-define",
+          "APP_ENV=dev"
+        ]
+      },
+      {
+        "name": "Launch uat",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "uat",
+          "--target",
+          "lib/main.dart",
+          "--dart-define",
+          "APP_ENV=uat"
+        ]
+      },
+      {
+        "name": "Launch production",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/main.dart",
+        "args": [
+          "--flavor",
+          "prod",
+          "--target",
+          "lib/main.dart",
+          "--dart-define",
+          "APP_ENV=prod"
+        ]
+      }
+    ]
+  }
+  
