@@ -28,8 +28,9 @@ part 'widget/item_builder.dart';
 
 @RoutePage()
 final class HomeScreen extends BaseView<HomeCubit, HomeState> {
-  HomeScreen({super.key}) : super(cubit: getIt.call);
-
+  HomeScreen({super.key, required this.messages})
+      : super(cubit: () => getIt<HomeCubit>(param1: messages));
+  final List<MessageEntity> messages;
   @override
   Widget builder(BuildContext context, HomeCubit cubit) {
     return Scaffold(

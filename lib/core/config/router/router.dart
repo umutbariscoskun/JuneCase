@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mutlumesaj/features/app/domain/entity/message_entity.dart';
 import 'package:mutlumesaj/features/app/presentation/home/home_view.dart';
 import 'package:mutlumesaj/features/app/presentation/splash/splash_screen.dart';
 

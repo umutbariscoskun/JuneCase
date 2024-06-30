@@ -11,10 +11,10 @@ class AnimatedButton extends StatefulWidget {
   });
 
   @override
-  _AnimatedButtonState createState() => _AnimatedButtonState();
+  AnimatedButtonState createState() => AnimatedButtonState();
 }
 
-class _AnimatedButtonState extends State<AnimatedButton>
+class AnimatedButtonState extends State<AnimatedButton>
     with SingleTickerProviderStateMixin {
   double _scale = 1.0;
   late AnimationController _controller;
