@@ -103,4 +103,8 @@ run-debug-uat:
 
  ### UI
 ![Simulator Screenshot - iPhone 15 Pro - 2024-06-30 at 21 40 30](https://github.com/umutbariscoskun/JuneCase/assets/45595606/d0b04f18-6650-4ccf-8ad7-d577030806b9)
+
+#### Custom Animated Buttons
+![Simulator Screen Recording - iPhone 15 Pro - 2024-06-30 at 21 45 50](https://github.com/umutbariscoskun/JuneCase/assets/45595606/6e126fcf-96d6-435c-a36b-c2ed54bd8b7e)
+
 # JuneCase
