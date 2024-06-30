@@ -33,7 +33,8 @@ final class _ItemBuilder extends BaseWidget<HomeCubit, HomeState> {
                 child: BlurContainer(
                   child: _MessageBox(
                     item: item,
-                    onLikeButtonPressed: (item) => cubit.likeAnItem(item),
+                    onLikeButtonPressed: (item) async =>
+                        await cubit.likeAnItem(item),
                   ),
                 ),
               ),
