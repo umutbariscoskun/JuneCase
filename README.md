@@ -24,10 +24,10 @@ A new Flutter project.
 
 #### TEST, UAT, PROD
 
-/// run in terminal for example: `make run-ios-debug-test`
+/// run in terminal for example: `make run-debug-dev`
 
 run-debug-dev:
-	flutter run --target lib/main.dart --flavor test --dart-define=APP_ENV=test
+	flutter run --target lib/main.dart --flavor dev --dart-define=APP_ENV=dev
 
 run-debug-uat:
 	flutter run --target lib/main.dart --flavor uat --dart-define=APP_ENV=uat
