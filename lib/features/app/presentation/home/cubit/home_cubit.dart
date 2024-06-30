@@ -81,7 +81,7 @@ final class HomeCubit extends BaseCubit<HomeState> {
       return entity;
     }).toList();
 
-    await updateApiMessage(e);
+    updateApiMessage(e);
     emit((state as HomeLoaded).copyWith(messages: likedData));
   }
 
