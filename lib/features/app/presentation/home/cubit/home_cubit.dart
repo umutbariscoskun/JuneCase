@@ -32,7 +32,7 @@ final class HomeCubit extends BaseCubit<HomeState> {
   }
 
   Future<void> onIndexChanged(int index) async {
-    if (index % 4 == 0) {
+    if (index != 0 && index % 4 == 0) {
       if (!isLastPage) {
         _page++;
 

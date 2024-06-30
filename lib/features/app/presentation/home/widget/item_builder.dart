@@ -24,8 +24,6 @@ final class _ItemBuilder extends BaseWidget<HomeCubit, HomeState> {
 
             return Padding(
               padding: EdgeInsets.only(
-                left: 24.w,
-                right: 24.w,
                 top: 24.h,
                 bottom: 130.h,
               ),
