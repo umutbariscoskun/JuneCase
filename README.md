@@ -1,4 +1,4 @@
-# Study Case
+# June Case
 
 A new Flutter project.
 
